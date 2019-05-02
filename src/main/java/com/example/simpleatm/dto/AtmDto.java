@@ -174,8 +174,8 @@ public class AtmDto {
         // TODO use transaction class to represent transaction
 
         // first we find if there is an option
-        int[] values = {20, 50, 100, 200,500,1000};
-        int[] amounts = {stashOf20,stashOf50,stashOf100,stashOf200,stashOf500,stashOf1000};
+        int[] values = {20, 50, 100, 200, 500, 1000};
+        int[] amounts = {stashOf20, stashOf50, stashOf100, stashOf200, stashOf500, stashOf1000};
         System.out.println("Stash before remove: " + stashOf20 + " " + stashOf50 + " " + stashOf100 + " " + stashOf200 + " " + stashOf500 + " " + stashOf1000);
 
         List<Integer[]> results = solutions(values, amounts, new int[6], amount.intValue(), 0);
@@ -186,7 +186,7 @@ public class AtmDto {
 
         if (results.size() > 0) {
             // spec is highest bills first, which is the last element
-            Integer[] optimal = results.get(results.size()-1);
+            Integer[] optimal = results.get(results.size() - 1);
             removeBillOf20(optimal[0]);
             removeBillOf50(optimal[1]);
             removeBillOf100(optimal[2]);
@@ -196,12 +196,13 @@ public class AtmDto {
 
             System.out.println("Stash after remove: " + stashOf20 + " " + stashOf50 + " " + stashOf100 + " " + stashOf200 + " " + stashOf500 + " " + stashOf1000);
             // This shows the order of bills in the application log
-            System.out.println("Bills given out in order: -- 1000 * " + optimal[5] + " -- 500 * " + optimal[4] + " -- 200 * " + optimal[3] + " -- 100 * " + optimal[2]+ " -- 50 * " + optimal[1]+ " -- 20 * " + optimal[0] );
+            System.out.println("Bills given out in order: -- 1000 * " + optimal[5] + " -- 500 * " + optimal[4] + " -- 200 * " + optimal[3] + " -- 100 * " + optimal[2] + " -- 50 * " + optimal[1] + " -- 20 * " + optimal[0]);
 
         } else {
             System.out.println("Stash TOO LOW. current: " + stashOf20 + " " + stashOf50 + " " + stashOf100 + " " + stashOf200 + " " + stashOf500 + " " + stashOf1000);
             // TODO we already withdrew from the account - needs to be implemented to not withdraw
         }
+    }
 
     public static List<Integer[]> solutions(int[] values, int[] ammounts, int[] variation, int price, int position) {
         List<Integer[]> list = new ArrayList<>();
