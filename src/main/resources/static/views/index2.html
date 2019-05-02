@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Main Page</title>
+</head>
+<body ng-app="demo" data-ng-init="init()">
+
+<div align="center"><h2>ATM Machine Acme Inc.</h2><div>
+
+<hr/>
+<div class="container" ng-controller="UserController" >
+
+    <div class="row">
+        <div class="column left" style="background-color:#aaa;">
+            <h2>Deposit</h2>
+            <p>
+            <div class="btn-group" ng-controller="AtmController">
+                <button ng-click="depositFunds(20);depositBills(1,0,0,0,0,0)" class="btn btn-sm btn-info">20</button>
+                <button ng-click="depositFunds(50);depositBills(0,1,0,0,0,0)" class="btn btn-sm btn-info">50</button>
+                <button ng-click="depositFunds(100);depositBills(0,0,1,0,0,0)" class="btn btn-sm btn-info">100</button>
+            </div>
+            </p>
+        </div>
+        <div class="column middle" style="background-color:#bbb;">
+
+            <h3>Welcome user: {{user1.userName}}</h3>
+            <div class="row">
+                <div class="col-sm-6" style="background-color:yellow;">
+                    <p>Account: </p>
+                </div>
+                <div class="col-sm-6" style="background-color:pink;">
+                    <p>{{account1.accountName}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6" style="background-color:yellow;">
+                    <p>Balance: </p>
+                </div>
+                <div class="col-sm-6" style="background-color:pink;">
+                    <p>{{account1.balance}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6" style="background-color:grey;">
+                    <p></p>
+                </div>
+                <div class="col-sm-6" style="background-color:grey;">
+                    <p></p>
+                </div>
+
+            </div>
+
+            <br><br><br><br>
+
+            <label>Mutation</label> <input type="text" ng-model="balance" ng-list class="input-sm custom-width spacing"
+                                          placeholder="amount for below buttons"/>
+            <br><br>
+
+            <div class="row" ng-controller="AtmController">
+                <div class="col-sm-4" style="background-color:grey;">
+                    <button ng-click="saveUserBalance()" class="btn btn-sm btn-info">Update Balance</button>
+                </div>
+                <div class="col-sm-4" style="background-color:grey;">
+                    <button ng-click="depositFunds(balance)" class="btn btn-sm btn-info">Deposit</button>
+                </div>
+                <div class="col-sm-4" style="background-color:grey;">
+                    <button ng-click="withdrawFunds();withdrawBills();" class="btn btn-sm btn-info">Withdraw</button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="column right" style="background-color:#ccc;">
+            <h2>Deposit</h2>
+            <p>
+            <div class="btn-group" ng-controller="AtmController">
+                <button ng-click="depositFunds(200);depositBills(0,0,0,1,0,0)" class="btn btn-sm btn-info">200</button>
+                <button ng-click="depositFunds(500);depositBills(0,0,0,0,1,0)" class="btn btn-sm btn-info">500</button>
+                <button ng-click="depositFunds(1000);depositBills(0,0,0,0,0,1)" class="btn btn-sm btn-info">1000</button>
+            </div>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/UserController.js"></script>
+<script src="js/app/UserService.js"></script>
+<script src="js/app/AtmController.js"></script>
+<script src="js/app/AtmService.js"></script>
+<link rel="stylesheet" href="../css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/app/app.css"/>
+</html>
